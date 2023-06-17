@@ -27,12 +27,24 @@ const format = () => {
   week.textContent = 'Week';
   projects.textContent = 'Projects';
   
-  side.append(tasks);
-  side.append(today);
-  side.append(week);
-  side.append(projects);
+  side.append(tasks, today, week, projects);
   container.append(side);
 
+  /* Main */
+  const main = document.createElement('div');
+  const mainHeader = document.createElement('div');
+  const mainText = document.createElement('p');
+  const mainBtn = document.createElement('button');
+  main.classList.add('main');
+  mainText.classList.add('mainText');
+  mainBtn.classList.add('mainBtn');
+
+  mainText.textContent = 'Home';
+  mainBtn.textContent = 'Add task';
+
+  mainHeader.append(mainText, mainBtn);
+  main.append(mainHeader);
+  container.append(main);
 };
 
 export { format };

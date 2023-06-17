@@ -53,6 +53,8 @@ body {
   font-family: 'Cabin', sans-serif;
 }
 
+
+/* Header */
 .header {
   display: flex;
   align-items: center;
@@ -61,6 +63,20 @@ body {
 }
 
 .headerText {
-  font-size: 5vw;
-  padding: 5vw 5vw;
+  font-size: 3vw;
+  padding: 2vw 3vw;
+}
+
+/* Side */
+.side {
+  background-color: #A5AE9E;
+  color: white;
+  height: calc(100vh - 7vw);
+  width: 30%;
+  padding-left: 2vw;
+}
+
+.side p {
+  padding-top: 2vw;
+  font-size: 2vw;
 }

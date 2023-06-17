@@ -94,13 +94,15 @@ body {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
   background: whitesmoke;
+  padding-top: 3vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
 .main > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2vw;
 }
 
 .mainText {
@@ -109,10 +111,9 @@ body {
 
 .mainBtn {
   font-size: 2vw;
-  border: none;
-  border-radius: 20px;
+  border-radius: 2.5vw;
   padding: 1.5vw;
-  border: 1px solid whitesmoke;
+  border: 0.2vw solid whitesmoke;
   background-color: #0B1D51;
   color: white;
   transition: background-color 0.5s ease;
@@ -120,7 +121,7 @@ body {
 
 .mainBtn:hover {
   cursor: pointer;
-  border: 1px solid #0B1D51;
+  border: 0.2vw solid #0B1D51;
   background-color: whitesmoke;
   color: #0B1D51;
 }

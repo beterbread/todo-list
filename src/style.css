@@ -89,6 +89,10 @@ body {
   font-size: 2vw;
 }
 
+.side p:hover {
+  cursor: pointer;
+}
+
 /* Main */
 .main {
   grid-column: 2 / 3;
@@ -99,7 +103,7 @@ body {
   padding-right: 5vw;
 }
 
-.main > div {
+.mainHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -113,7 +117,7 @@ body {
   font-size: 2vw;
   border-radius: 2.5vw;
   padding: 1.5vw;
-  border: 0.2vw solid whitesmoke;
+  border: 0.2vw solid #0B1D51;
   background-color: #0B1D51;
   color: white;
   transition: background-color 0.5s ease;
@@ -124,4 +128,36 @@ body {
   border: 0.2vw solid #0B1D51;
   background-color: whitesmoke;
   color: #0B1D51;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form p {
+  font-size: 2vw;
+}
+
+.form input, .form select {
+  margin-top: .5vw;
+  margin-bottom: 1vw;
+  border: 0.2vw solid #0B1D51;
+}
+
+.lastRow {
+  display: flex;
+}
+
+/* Task */
+.task {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.task img {
+  width: 5vw;
+  height: auto;
 }

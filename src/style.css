@@ -204,6 +204,7 @@ body {
   border-bottom: 0.7vw black solid;
   padding-bottom: .5vw;
   margin-bottom: 1vw;
+  font-weight: bold;
 }
 
 .task {
@@ -236,12 +237,26 @@ body {
 .task p {
   justify-self: start;
   word-break: break-all;
+  font-size: 2vw;
 }
 
-.task p:first-of-type, .infoDescr  {
+.task p:first-of-type:not(.date), .infoDescr  {
   padding-right: 2vw;
+}
+
+.infoDescr {
+  font-size: 1.5vw;
 }
 
 .iconCont {
   justify-self: start;
+}
+
+.dateCont {
+  display: flex;
+  align-items: center;
+}
+
+.date {
+  margin-right: .5vw;
 }

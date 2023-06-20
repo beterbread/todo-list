@@ -1,11 +1,14 @@
 import Info from './icons/information-outline.svg';
 import Edit from './icons/square-edit-outline.svg';
 import Trash from './icons/trash-can-outline.svg';
+import Asc from './icons/sort-ascending.svg';
+import Desc from './icons/sort-descending.svg';
 import { form } from './format.js';
 import { compareDesc, isToday, isThisWeek, isPast } from 'date-fns';
 
 let globalList = [];
 let check = 'normal';
+let sort = 'desc';
 
 function Task(title, descr, date, priority) {
   this.title = title;
@@ -25,7 +28,12 @@ function create(dateString) {
 
 function display() {
   let list = [];
-  globalList.sort((a, b) => compareDesc(create(b.date), create(a.date)));
+  if (sort === 'asc') {
+    globalList.sort((a, b) => compareDesc(create(a.date), create(b.date)));
+  }
+  else {
+    globalList.sort((a, b) => compareDesc(create(b.date), create(a.date)));
+  }
   const nothing = document.querySelector('.nothing');
   if (check === 'normal') {
     list = globalList;
@@ -75,11 +83,31 @@ function display() {
     const title = document.createElement('p');
     const date = document.createElement('p'); 
     const priority = document.createElement('p');
+    const sortBy = new Image();
+    if (sort === 'asc') {
+      sortBy.src = Asc;
+    }
+    else {
+      sortBy.src = Desc;
+    }
+    sortBy.addEventListener('click', () => {
+      if (sort === 'asc') {
+        sort = 'desc';
+      }
+      else {
+        sort = 'asc';
+      }
+      display();
+    });
     task.classList.add('task');
+    date.classList.add('date');
     title.textContent = 'Title';
     date.textContent = 'Date';
     priority.textContent = 'Priority';
-    task.append(title, date, priority);
+    const dateCont = document.createElement('div');
+    dateCont.classList.add('dateCont');
+    dateCont.append(date, sortBy);
+    task.append(title, dateCont, priority);
     taskCont.append(task);
   }
   for (let i = 0; i < list.length; i++) {
@@ -193,24 +221,28 @@ const tasks = () => {
   const nothing = document.querySelector('.nothing');
 
   tasks.addEventListener('click', () => {
+    mainText.textContent = 'All tasks';
     form.style.display = 'none';
     check = 'normal';
     display(globalList);
   });
 
   today.addEventListener('click', () => {
+    mainText.textContent = 'Tasks for today';
     form.style.display = 'none';
     check = 'today';
     display(globalList);
   });
 
   past.addEventListener('click', () => {
+    mainText.textContent = 'Past tasks';
     form.style.display = 'none';
     check = 'past';
     display(globalList);
   });
 
   week.addEventListener('click', () => {
+    mainText.textContent = 'Tasks for this week';
     form.style.display = 'none';
     check = 'week';
     display(globalList);

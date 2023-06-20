@@ -8,7 +8,7 @@ import { compareDesc, isToday, isThisWeek, isPast } from 'date-fns';
 
 let globalList = [];
 let check = 'normal';
-let sort = 'desc';
+let sort = 'asc';
 
 function Task(title, descr, date, priority) {
   this.title = title;
@@ -26,13 +26,26 @@ function create(dateString) {
   return new Date(year, month - 1, day);
 }
 
+function convert(dateString) {
+  const [year, month, day] = dateString.split('-');
+  const formattedDate = `${month}/${day}/${year}`;
+  return formattedDate;
+}
+
+function revert(dateString) {
+  const [month, day, year] = dateString.split('/');
+  const formattedDate = `${year}-${month}-${day}`;
+  return formattedDate;
+}
+
+
 function display() {
   let list = [];
   if (sort === 'asc') {
-    globalList.sort((a, b) => compareDesc(create(a.date), create(b.date)));
+    globalList.sort((a, b) => compareDesc(create(b.date), create(a.date)));
   }
   else {
-    globalList.sort((a, b) => compareDesc(create(b.date), create(a.date)));
+    globalList.sort((a, b) => compareDesc(create(a.date), create(b.date)));
   }
   const nothing = document.querySelector('.nothing');
   if (check === 'normal') {
@@ -129,7 +142,7 @@ function display() {
     iconCont.append(info, edit, trash);
     title.textContent = list[i].title;
     descr.textContent = list[i].descr;
-    date.textContent = list[i].date;
+    date.textContent = convert(list[i].date);
     priority.textContent = list[i].priority;
     const taskFormCont = document.createElement('div');
     const infoDescr = document.createElement('p');
@@ -150,7 +163,7 @@ function display() {
     const required = document.querySelectorAll('.required')[i + 1];
     formTitle.value = title.textContent;
     formDescr.value = descr.textContent;
-    formDate.value = date.textContent;
+    formDate.value = revert(date.textContent);
     formPriority.value = priority.textContent;
     save.textContent = 'Save';
     taskForm.style.display = 'none';
@@ -313,6 +326,7 @@ const add = () => {
       const priority = document.querySelectorAll('.priority')[0];
       globalList.push(new Task(title.value, descr.value, date.value, priority.value));
       display();
+      priority.value = 'Low';
       nothing.style.display = 'none';
     }
   });

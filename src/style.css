@@ -214,12 +214,14 @@ body {
 
 .taskHeader {
   border-bottom: 0.7vw black solid;
+  width: 95%;
   padding-bottom: .5vw;
   font-weight: bold;
 }
 
 .taskFormCont {
   border-bottom: 0.2vw black solid;
+  width: 95%;
 }
 
 .task img {
@@ -247,7 +249,8 @@ body {
 }
 
 .infoDescr {
-  font-size: 1vw;
+  font-size: 1.1vw;
+  margin-bottom: 0.5vw;
 }
 
 .iconCont {

@@ -98,7 +98,7 @@ body {
   background: whitesmoke;
   padding-top: 3vw;
   padding-left: 5vw;
-  padding-right: 5vw;
+  padding-right: 15vw;
 }
 
 .mainHeader {
@@ -130,11 +130,8 @@ body {
 
 /* Form */
 .form {
-  margin-top: 1vw;
   display: none;
   flex-direction: column;
-  margin-bottom: 1vw;
-  width: 95%;
 }
 
 .form p {
@@ -199,14 +196,12 @@ body {
 }
 
 .required {
+  padding-top: 0;
   color: #CC0000;
-  margin-top: 1vw;
 }
 
 /* Task */
 .task {
-  padding-top: 1vw;
-  padding-bottom: 1vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-row: auto;
@@ -214,15 +209,16 @@ body {
 }
 
 .taskHeader {
+  padding-top: 1vw;
   border-bottom: 0.7vw black solid;
-  width: 95%;
   padding-bottom: .5vw;
   font-weight: bold;
 }
 
 .taskFormCont {
+  padding-top: 1vw;
+  padding-bottom: 1vw;
   border-bottom: 0.2vw black solid;
-  width: 95%;
 }
 
 .task img {
@@ -251,7 +247,7 @@ body {
 
 .infoDescr {
   font-size: 1.1vw;
-  margin-bottom: 0.5vw;
+  margin-bottom: -.5vw;
 }
 
 .iconCont {

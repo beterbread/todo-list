@@ -163,6 +163,7 @@ function display() {
     const formDate = document.querySelectorAll('.date')[i + 1];
     const formPriority = document.querySelectorAll('.priority')[i + 1];
     const required = document.querySelectorAll('.required')[i + 1];
+    required.style.paddingtop = '0';
     formTitle.value = title.textContent;
     formDescr.value = descr.textContent;
     formDate.value = revert(date.textContent);
@@ -200,6 +201,7 @@ function display() {
       e.preventDefault();
       taskForm.style.display = 'none';
       required.textContent = '';
+      required.style.paddingTop = '0';
       task.style.display = 'grid';
     });
 
@@ -209,7 +211,8 @@ function display() {
       if (formTitle.value === '' || formDescr.value === '' ||
       formDate.value === '' || formPriority.value === '') {
         check = true;
-        required.textContent = '*All fields are required';    
+        required.textContent = '*All fields are required';  
+        required.style.paddingTop = '1vw';  
       }
       if (check === false) {
         list[i].title = formTitle.value;
@@ -219,6 +222,7 @@ function display() {
         list[i].date = formDate.value;
         taskForm.style.display = 'none';
         required.textContent = '';
+        required.style.paddingTop = '0';
         task.style.display = 'grid';
         display(list);
       }
@@ -278,6 +282,7 @@ const add = () => {
   input.forEach(function(element) {
     element.addEventListener('input', () => {
       required.textContent = ''; 
+      required.style.paddingTop = '0';
     });
   });  
   
@@ -305,6 +310,7 @@ const add = () => {
     });   
     form.style.display = 'none';
     required.textContent = '';  
+    required.style.paddingTop = '0';
     if (globalList.length === 0) {
       nothing.style.display = 'revert'; 
     }
@@ -316,12 +322,14 @@ const add = () => {
     input.forEach(function(element) {
         if (element.value.trim() === '') {
           check = true;
-          required.textContent = '*All fields are required';    
+          required.textContent = '*All fields are required';   
+          required.style.paddingTop = '1vw'; 
         }
     });
     if (check === false) {
       form.style.display = 'none';
       required.textContent = '';
+      required.style.paddingTop = '0';
       const title = document.querySelectorAll('.title')[0];
       const descr = document.querySelectorAll('.descr')[0];
       const date = document.querySelectorAll('.date')[0];

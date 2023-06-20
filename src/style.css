@@ -99,6 +99,7 @@ body {
   padding-top: 3vw;
   padding-left: 5vw;
   padding-right: 15vw;
+  padding-bottom: 5vw;
 }
 
 .mainHeader {
@@ -169,7 +170,6 @@ body {
 
 .submit, .cancel {
   margin-top: .5vw;
-  border-style: none;
   font-size: 1.5vw;
   font-weight: bold;
   padding: 0.5vw;
@@ -181,7 +181,7 @@ body {
   background-color: #0B1D51;
   color: white;
   border: .2vw #0B1D51 solid;
-  margin-right: 2vw;
+  margin-right: 1.5vw;
 }
 
 .cancel {

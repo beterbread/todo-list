@@ -10,6 +10,10 @@ let globalList = [];
 let check = 'normal';
 let sort = 'asc';
 
+function save() {
+  localStorage.setItem('data', JSON.stringify(globalList));
+}
+
 function Task(title, descr, date, priority) {
   this.title = title;
   this.descr = descr;
@@ -38,8 +42,8 @@ function revert(dateString) {
   return formattedDate;
 }
 
-
 function display() {
+  save();
   let list = [];
   if (sort === 'asc') {
     globalList.sort((a, b) => compareDesc(create(b.date), create(a.date)));
@@ -270,6 +274,10 @@ const tasks = () => {
 };
 
 const add = () => {
+  if (localStorage.getItem('data')) {
+    globalList = JSON.parse(localStorage.getItem('data'));
+    display();
+  }
   const main = document.querySelector('.main');
   const form = document.querySelector('.form');
   const mainBtn = document.querySelector('.mainBtn');
@@ -342,4 +350,4 @@ const add = () => {
   });
 }
 
-export { tasks, add };
+export { tasks, add }

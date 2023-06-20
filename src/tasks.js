@@ -23,27 +23,65 @@ function create(dateString) {
   return new Date(year, month - 1, day);
 }
 
-function update() {
-  globalList.sort((a, b) => compareDesc(create(b.date), create(a.date)));
-}
-
 function display() {
   let list = [];
-  update();
+  globalList.sort((a, b) => compareDesc(create(b.date), create(a.date)));
+  const nothing = document.querySelector('.nothing');
   if (check === 'normal') {
     list = globalList;
+    if (list.length === 0) {
+      nothing.style.display = 'revert';
+      nothing.textContent = 'You have no tasks... Add some tasks you bum!';
+    }
+    else {
+      nothing.style.display = 'none';
+    }
   }
   if (check === 'today') {
     list = globalList.filter(obj => isToday(create(obj.date)));
+    if (list.length === 0) {
+      nothing.style.display = 'revert';
+      nothing.textContent = 'You have no tasks for today...';
+    }
+    else {
+      nothing.style.display = 'none';
+    }
   }
   if (check === 'week') {
     list = globalList.filter(obj => isThisWeek(create(obj.date)));
+    if (list.length === 0) {
+      nothing.style.display = 'revert';
+      nothing.textContent = 'You have no tasks for this week...';
+    }
+    else {
+      nothing.style.display = 'none';
+    }
   }
   if (check === 'past') {
     list = globalList.filter(obj => isPast(create(obj.date)) && !isToday(create(obj.date)));
+    if (list.length === 0) {
+      nothing.style.display = 'revert';
+      nothing.textContent = 'You have no past tasks...';
+    }
+    else {
+      nothing.style.display = 'none';
+    }
   }
   const taskCont = document.querySelector('.taskCont');
   taskCont.innerHTML = '';
+  if (list.length !== 0) {
+    const task = document.createElement('div');
+    task.classList.add('taskHeader');
+    const title = document.createElement('p');
+    const date = document.createElement('p'); 
+    const priority = document.createElement('p');
+    task.classList.add('task');
+    title.textContent = 'Title';
+    date.textContent = 'Date';
+    priority.textContent = 'Priority';
+    task.append(title, date, priority);
+    taskCont.append(task);
+  }
   for (let i = 0; i < list.length; i++) {
     const task = document.createElement('div');
     const title = document.createElement('p');
@@ -59,6 +97,7 @@ function display() {
     trash.src = Trash;
     const main = document.querySelector('.main');
     const iconCont = document.createElement('div');
+    iconCont.classList.add('iconCont');
     iconCont.append(info, edit, trash);
     title.textContent = list[i].title;
     descr.textContent = list[i].descr;
@@ -68,6 +107,7 @@ function display() {
     const infoDescr = document.createElement('p');
     infoDescr.style.display = 'none';
     infoDescr.textContent = 'Description: ' + descr.textContent;
+    infoDescr.classList.add('infoDescr');
     task.append(title, date, priority, iconCont);
     taskFormCont.append(task, infoDescr, form());
     taskCont.append(taskFormCont);
@@ -111,12 +151,12 @@ function display() {
         infoDescr.style.display = 'none';
       }
     });
-
+    
     cancel.addEventListener('click', (e) => {
       e.preventDefault();
       taskForm.style.display = 'none';
-      task.style.display = 'flex';
-      infoDescr.style.display = 'revert';
+      required.textContent = '';
+      task.style.display = 'grid';
     });
 
     save.addEventListener('click', (e) => {
@@ -135,7 +175,7 @@ function display() {
         list[i].date = formDate.value;
         taskForm.style.display = 'none';
         required.textContent = '';
-        task.style.display = 'flex';
+        task.style.display = 'grid';
         display(list);
       }
     });
@@ -153,36 +193,24 @@ const tasks = () => {
   const nothing = document.querySelector('.nothing');
 
   tasks.addEventListener('click', () => {
-    nothing.textContent = 'You currently have no tasks... Add some tasks you bum!';
-    mainText.textContent = 'All tasks';
-    mainBtn.textContent = 'Add task';
     form.style.display = 'none';
     check = 'normal';
     display(globalList);
   });
 
   today.addEventListener('click', () => {
-    nothing.textContent = 'You currently have no tasks... Add some tasks you bum!';
-    mainText.textContent = 'Tasks for today';
-    mainBtn.textContent = 'Add task';
     form.style.display = 'none';
     check = 'today';
     display(globalList);
   });
 
   past.addEventListener('click', () => {
-    nothing.textContent = 'You currently have no tasks... Add some tasks you bum!';
-    mainText.textContent = 'Past tasks';
-    mainBtn.textContent = 'Add task';
     form.style.display = 'none';
     check = 'past';
     display(globalList);
   });
 
   week.addEventListener('click', () => {
-    nothing.textContent = 'You currently have no tasks... Add some tasks you bum!';
-    mainText.textContent = 'Tasks for this week';
-    mainBtn.textContent = 'Add task';
     form.style.display = 'none';
     check = 'week';
     display(globalList);
@@ -198,7 +226,13 @@ const add = () => {
   const required = document.querySelector('.required');
   const input = document.querySelectorAll('input');
   const nothing = document.querySelector('.nothing');
- 
+
+  input.forEach(function(element) {
+    element.addEventListener('input', () => {
+      required.textContent = ''; 
+    });
+  });  
+  
   mainBtn.addEventListener('click', () => {
     nothing.style.display = 'none';
     const taskForm = document.querySelectorAll('.form');
@@ -223,7 +257,9 @@ const add = () => {
     });   
     form.style.display = 'none';
     required.textContent = '';  
-    nothing.style.display = 'revert';
+    if (globalList.length === 0) {
+      nothing.style.display = 'revert'; 
+    }
   });
 
   submit.addEventListener('click', (e) => {

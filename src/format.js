@@ -17,17 +17,21 @@ const form = () =>  {
   const submit = document.createElement('button');
   const cancel = document.createElement('button');
   const required = document.createElement('p');
+  const titleCont = document.createElement('div');
   const dateCont = document.createElement('div');
   const priorityCont = document.createElement('div');
-  const lastRow = document.createElement('div');
+  const firstRow = document.createElement('div');
+  const btns = document.createElement('div');
+  btns.append(submit, cancel);
+  titleCont.append(titleHead, title);
   dateCont.append(dateHead, date);
   priorityCont.append(priorityHead, priority);
-  lastRow.append(dateCont, priorityCont, submit, cancel);
+  firstRow.append(titleCont, dateCont, priorityCont);
   form.classList.add('form');
   submit.classList.add('submit');
   cancel.classList.add('cancel');
   required.classList.add('required');
-  lastRow.classList.add('lastRow');
+  firstRow.classList.add('firstRow');
   title.classList.add('title');
   descr.classList.add('descr');
   date.classList.add('date');
@@ -49,7 +53,7 @@ const form = () =>  {
   priorityHead.textContent = 'Priority';
   title.setAttribute('placeholder', 'Title');
   descr.setAttribute('placeholder', 'Description');
-  form.append(titleHead, title, descrHead, descr, lastRow, required);
+  form.append(firstRow, descrHead, descr, btns, required);
   return form;
 }
 
@@ -105,7 +109,7 @@ const format = () => {
   
   const nothing = document.createElement('p');
   nothing.classList.add('nothing');
-  nothing.textContent = 'You currently have no tasks... Add some tasks you bum!';
+  nothing.textContent = 'You have no tasks... Add some tasks you bum!';
 
   mainHeader.append(mainText, mainBtn);
   main.append(mainHeader);

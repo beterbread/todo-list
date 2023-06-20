@@ -120,20 +120,22 @@ body {
   border: 0.2vw solid #0B1D51;
   background-color: #0B1D51;
   color: white;
+  font-weight: bold;
   transition: background-color 0.5s ease;
 }
 
-.mainBtn:hover {
+.mainBtn:hover, .submit:hover {
   cursor: pointer;
-  border: 0.2vw solid #0B1D51;
   background-color: whitesmoke;
   color: #0B1D51;
 }
 
 /* Form */
 .form {
-  display: flex;
+  margin-top: 1vw;
+  display: none;
   flex-direction: column;
+  margin-bottom: 1vw;
 }
 
 .form p {
@@ -143,21 +145,103 @@ body {
 .form input, .form select {
   margin-top: .5vw;
   margin-bottom: 1vw;
-  border: 0.2vw solid #0B1D51;
+  padding: .5vw;
+  font-size: 1.5vw;
+  border: 0.2vw solid black;
+  background-color: white;
 }
 
-.lastRow {
+.form input:focus, .form select:focus {
+  box-shadow: 0px 0px 0.2vw #0B1D51;
+  outline: none;
+}
+
+.firstRow {
   display: flex;
+  justify-content: space-between;
+}
+
+.nothing {
+  margin-top: 1vw;
+  font-size: 2vw;
+}
+
+.submit, .cancel {
+  margin-top: .5vw;
+  border-style: none;
+  font-size: 2vw;
+  font-weight: bold;
+  padding: 1vw;
+  border-radius: .5vw;
+  transition: background-color 0.5s ease;
+}
+
+.submit {
+  background-color: #0B1D51;
+  color: white;
+  border: .2vw #0B1D51 solid;
+  margin-right: 1vw;
+}
+
+.cancel {
+  background-color: white;
+  color: #999999;
+  border: .2vw #999999 solid;
+}
+
+.cancel:hover {
+  cursor: pointer;
+  background-color: #ededed;
+}
+
+.required {
+  color: #CC0000;
+  margin-top: 1vw;
 }
 
 /* Task */
+.taskHeader {
+  border-bottom: 0.7vw black solid;
+  padding-bottom: .5vw;
+  margin-bottom: 1vw;
+}
+
 .task {
-  display: flex;
-  justify-content: space-evenly;
+  margin-top: 1vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-row: auto;
   align-items: center;
 }
 
+.task:first-of-type {
+  margin-top: .5vw;
+}
+
 .task img {
-  width: 5vw;
+  width: 3vw;
   height: auto;
+  transition: transform .1s ease;
+}
+
+.task img:nth-of-type(2) {
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+
+.task img:hover {
+  transform: translateY(-.1vw);
+}
+
+.task p {
+  justify-self: start;
+  word-break: break-all;
+}
+
+.task p:first-of-type, .infoDescr  {
+  padding-right: 2vw;
+}
+
+.iconCont {
+  justify-self: start;
 }

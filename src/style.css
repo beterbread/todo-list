@@ -233,6 +233,7 @@ body {
 }
 
 .task img:hover {
+  cursor: pointer;
   transform: translateY(-.1vw);
 }
 

@@ -133,6 +133,7 @@ body {
   display: none;
   flex-direction: column;
   margin-bottom: 1vw;
+  width: 95%;
 }
 
 .form p {
@@ -156,7 +157,11 @@ body {
 .firstRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+}
+
+.firstRow div:nth-of-type(2) {
+  margin-left: 2vw; 
+  margin-right: 2vw;
 }
 
 .nothing {
@@ -178,7 +183,7 @@ body {
   background-color: #0B1D51;
   color: white;
   border: .2vw #0B1D51 solid;
-  margin-right: 1vw;
+  margin-right: 2vw;
 }
 
 .cancel {
@@ -198,12 +203,6 @@ body {
 }
 
 /* Task */
-.taskHeader {
-  border-bottom: 0.7vw black solid;
-  padding-bottom: .5vw;
-  font-weight: bold;
-}
-
 .task {
   padding-top: 1vw;
   padding-bottom: 1vw;
@@ -211,6 +210,12 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-row: auto;
   align-items: center;
+}
+
+.taskHeader {
+  border-bottom: 0.7vw black solid;
+  padding-bottom: .5vw;
+  font-weight: bold;
 }
 
 .taskFormCont {
@@ -237,7 +242,7 @@ body {
   font-size: 1.5vw;
 }
 
-.task p:first-of-type:not(.date), .infoDescr  {
+.task p:first-of-type:not(.dateHead), .infoDescr  {
   padding-right: 2vw;
 }
 
@@ -255,6 +260,6 @@ body {
   align-items: center;
 }
 
-.date {
+.dateHead {
   margin-right: .5vw;
 }

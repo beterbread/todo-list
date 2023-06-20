@@ -100,7 +100,7 @@ function display() {
       display();
     });
     task.classList.add('task');
-    date.classList.add('date');
+    date.classList.add('dateHead');
     title.textContent = 'Title';
     date.textContent = 'Date';
     priority.textContent = 'Priority';
@@ -307,10 +307,10 @@ const add = () => {
     if (check === false) {
       form.style.display = 'none';
       required.textContent = '';
-      const title = document.querySelector('.title');
-      const descr = document.querySelector('.descr');
-      const date = document.querySelector('.date');
-      const priority = document.querySelector('.priority');
+      const title = document.querySelectorAll('.title')[0];
+      const descr = document.querySelectorAll('.descr')[0];
+      const date = document.querySelectorAll('.date')[0];
+      const priority = document.querySelectorAll('.priority')[0];
       globalList.push(new Task(title.value, descr.value, date.value, priority.value));
       display();
       nothing.style.display = 'none';

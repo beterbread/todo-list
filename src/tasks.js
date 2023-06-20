@@ -104,13 +104,15 @@ function display() {
       sortBy.src = Desc;
     }
     sortBy.addEventListener('click', () => {
-      if (sort === 'asc') {
-        sort = 'desc';
+      if (list.length !== 1) {
+        if (sort === 'asc') {
+          sort = 'desc';
+        }
+        else {
+          sort = 'asc';
+        }
+        display();  
       }
-      else {
-        sort = 'asc';
-      }
-      display();
     });
     task.classList.add('task');
     date.classList.add('dateHead');

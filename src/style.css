@@ -78,16 +78,17 @@ body {
   grid-row: 2 / 3;
   background-color: #A5AE9E;
   color: white;
-  padding-left: 2vw;
+  padding-top: 1vw;
 }
 
 .side p {
-  padding-top: 2vw;
+  padding: 1vw 2vw;
   font-size: 2vw;
 }
 
 .side p:hover {
   cursor: pointer;
+  background-color: #97a091;
 }
 
 /* Main */
@@ -141,8 +142,8 @@ body {
 }
 
 .form input, .form select {
-  margin-top: .5vw;
-  margin-bottom: 1vw;
+  margin-top: .1vw;
+  margin-bottom: 0.5vw;
   padding: .5vw;
   font-size: 1vw;
   border: 0.2vw solid black;

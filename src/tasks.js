@@ -274,10 +274,6 @@ const tasks = () => {
 };
 
 const add = () => {
-  if (localStorage.getItem('data')) {
-    globalList = JSON.parse(localStorage.getItem('data'));
-    display();
-  }
   const main = document.querySelector('.main');
   const form = document.querySelector('.form');
   const mainBtn = document.querySelector('.mainBtn');
@@ -348,6 +344,20 @@ const add = () => {
       nothing.style.display = 'none';
     }
   });
+
+  if (localStorage.getItem('data')) {
+    input.forEach(function(element) {
+      element.value = '';
+    });   
+    form.style.display = 'none';
+    required.textContent = '';  
+    required.style.paddingTop = '0';
+    if (globalList.length === 0) {
+      nothing.style.display = 'revert'; 
+    }
+    globalList = JSON.parse(localStorage.getItem('data'));
+    display();
+  }
 }
 
 export { tasks, add }

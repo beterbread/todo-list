@@ -169,7 +169,7 @@ body {
   border-style: none;
   font-size: 1.5vw;
   font-weight: bold;
-  padding: 1vw;
+  padding: 0.5vw;
   border-radius: .5vw;
   transition: background-color 0.5s ease;
 }
@@ -201,24 +201,20 @@ body {
 .taskHeader {
   border-bottom: 0.7vw black solid;
   padding-bottom: .5vw;
-  margin-bottom: 1vw;
   font-weight: bold;
 }
 
 .task {
-  margin-top: 1vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-row: auto;
   align-items: center;
 }
 
-.task:not(.taskHeader) {
-  border-bottom: 0.2 vw black solid;
-}
-
-.task:first-of-type {
-  margin-top: .5vw;
+.taskFormCont {
+  border-bottom: 0.2vw black solid;
 }
 
 .task img {
@@ -237,7 +233,6 @@ body {
 }
 
 .task p {
-  justify-self: start;
   word-break: break-all;
   font-size: 1.5vw;
 }
@@ -251,7 +246,8 @@ body {
 }
 
 .iconCont {
-  justify-self: start;
+  margin: 0;
+  padding: 0;
 }
 
 .dateCont {

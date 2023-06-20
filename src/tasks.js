@@ -138,6 +138,7 @@ function display() {
     infoDescr.classList.add('infoDescr');
     task.append(title, date, priority, iconCont);
     taskFormCont.append(task, infoDescr, form());
+    taskFormCont.classList.add('taskFormCont');
     taskCont.append(taskFormCont);
     const taskForm = document.querySelectorAll('.form')[i + 1];
     const save = document.querySelectorAll('.submit')[i + 1];
